@@ -32,8 +32,6 @@ class NetworkInfoService {
     }else if (connectivityResult.contains(ConnectivityResult.mobile)) {
       type = 'mobile';
       ip = await _networkInfo.getWifiIP();
-
-
     }
     return NetworkInfoModel(
       connectionType: type,
