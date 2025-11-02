@@ -9,7 +9,7 @@ class NetworkInfoService {
   Future<NetworkInfoModel> fetchNetworkInfo() async{
     final connectivityResult = await _connectivity.checkConnectivity();
 
-    String type = 'null';
+    String type = "null";
     String? ssid;
     String? bssid;
     String? ip;
@@ -27,11 +27,22 @@ class NetworkInfoService {
       subnet = await _networkInfo.getWifiSubmask();
     }else if (connectivityResult.contains(ConnectivityResult.ethernet)) {
       type = 'Ethernet';
+
+      // NOTE: ETHERNET DOESN'T GIVE DETAILS ABOUT ITSELF SO WE USE WIFI DETAILS;
       ip = await _networkInfo.getWifiIP();
       gateway = await _networkInfo.getWifiGatewayIP();
+      broadcast = await _networkInfo.getWifiBroadcast();
+      subnet = await _networkInfo.getWifiSubmask();
+      ssid = await _networkInfo.getWifiName();
+      bssid = await _networkInfo.getWifiBSSID();
     }else if (connectivityResult.contains(ConnectivityResult.mobile)) {
-      type = 'mobile';
+      type = 'Mobile';
       ip = await _networkInfo.getWifiIP();
+      gateway = await _networkInfo.getWifiGatewayIP();
+      broadcast = await _networkInfo.getWifiBroadcast();
+      subnet = await _networkInfo.getWifiSubmask();
+      ssid = await _networkInfo.getWifiName();
+      bssid = await _networkInfo.getWifiBSSID();
     }
     return NetworkInfoModel(
       connectionType: type,

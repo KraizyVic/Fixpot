@@ -1,16 +1,17 @@
-# fixpot
 
-A new Flutter project.
+> [!NOTE]
+> 1. Device time should match current time.
+> 2. Works well with WIFI coz ethernet doesn't give network details
 
-## Getting Started
+# Fixpot
+A captive portal opener for both android and TVs.
 
-This project is a starting point for a Flutter application.
+## Prerequisites:
+1. Flutter SDK
+2. Knowledge in dart programming language
 
-A few resources to get you started if this is your first Flutter project:
+> [ WORKING ]
+> The app works by passing the device gateway in a webview, If not connected the captive portal redirects you to packages page else it redirects you to router login page
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Errors and bugs:
+For errors and bugs feel free to open an issue up top

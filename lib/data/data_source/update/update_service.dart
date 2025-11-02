@@ -13,6 +13,24 @@ class UpdateService {
 
   UpdateService({required this.repoOwner, required this.repoName});
 
+  /// Check if there is an internet connection.
+
+  Future<bool> hasInternet() async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result.first.rawAddress.isNotEmpty) {
+        print('✅ Connected to the internet');
+        return true; // internet works
+      }
+    } on SocketException catch (_) {
+      print('❌ No internet connection');
+      return false; // connected but no internet
+    }
+    print('❌ No internet connection');
+    return false;
+  }
+
+
   /// Detects the ABI (CPU architecture) of the device.
   Future<String> _getDeviceAbi() async {
     if (!Platform.isAndroid) return 'universal';
@@ -23,13 +41,22 @@ class UpdateService {
 
   /// Check for update on GitHub and return details (version, changelog, apkUrl)
   Future<Map<String, dynamic>?> checkForUpdate() async {
+    if (!await hasInternet()) {
+      print('❌ No internet connection');
+      return null;
+    }
+
     final abi = await _getDeviceAbi();
     print('🧠 Detected ABI: $abi');
 
     final url = Uri.parse('https://api.github.com/repos/$repoOwner/$repoName/releases/latest');
     final res = await http.get(url);
 
-    if (res.statusCode != 200) return null;
+
+    if (res.statusCode != 200){
+      print('❌ Error checking for update: ${res.statusCode}');
+      return null;
+    }
 
     final data = json.decode(res.body);
     final assets = (data['assets'] as List<dynamic>? ) ?? [];
