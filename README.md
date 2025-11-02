@@ -10,7 +10,7 @@ A captive portal opener for both android and TVs.
 1. Flutter SDK
 2. Knowledge in dart programming language
 
-> [ WORKING ]
+> [?WORKING]
 > The app works by passing the device gateway in a webview, If not connected the captive portal redirects you to packages page else it redirects you to router login page
 
 ## Errors and bugs:
