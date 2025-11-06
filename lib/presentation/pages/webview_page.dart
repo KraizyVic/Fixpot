@@ -39,11 +39,8 @@ class _WebviewPageState extends State<WebviewPage> {
     final DateTime fetchedDate = (widget.fetchedDate ?? DateTime.now()).toUtc();
 
     // Ensure target has scheme
-    final String targetUrl = widget.gateway != null
-        ? "http://${widget.gateway == "0.0.0.0" ? "8.8.8.8" : widget.gateway}"
-        : widget.ipAddress != null
-        ? "http://${widget.ipAddress}"
-        : "https://www.google.com"; // <- use https for generic fallback
+    final String targetUrl = widget.gateway != null ? "http://${widget.gateway == "0.0.0.0" ? "8.8.8.8" : widget.gateway}" : widget.ipAddress != null
+        ? "http://${widget.ipAddress}" : widget.testPage; // <- use https for generic fallback
 
     _controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)

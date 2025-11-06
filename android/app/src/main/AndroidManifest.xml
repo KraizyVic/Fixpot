@@ -11,7 +11,7 @@
 
     <application
         android:usesCleartextTraffic="true"
-        android:label="fixpot"
+        android:label="Fixpot"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

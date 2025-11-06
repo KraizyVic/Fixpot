@@ -99,46 +99,45 @@ class _NetworkInfoPageState extends State<NetworkInfoPage> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text("Date ${dateTime.day}/${dateTime.month}/${dateTime.year}",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,color: Theme.of(context).colorScheme.primary),),
-                                    Text("Last Updated at => ${dateTime.hour}:${dateTime.minute}:${dateTime.second}"),
-                                    Expanded(
-                                      child: Lottie.asset(
-                                        "lib/core/assets/Wifi Signal - Zortex.json",
-                                        width: 200,
-                                        height: 200,
-                                        fit: BoxFit.cover,
-                                        //reverse: true
-                                      ),
+                                    Lottie.asset(
+                                      "lib/core/assets/Wifi Signal - Zortex.json",
+                                      width: 200,
+                                      height: 200,
+                                      fit: BoxFit.cover,
+                                      //reverse: true
                                     ),
-                                    Row(
-                                      children: [
-                                        Expanded(
-                                          child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              networkInfoGridTile(context: context, title: 'Connection Type', value: networkInfo.connectionType.toUpperCase()),
-                                              networkInfoGridTile(context: context, title: 'Subnet Mask', value: "${networkInfo.subnet}")
-                                            ],
+                                    Expanded(
+                                      child: Row(
+                                        children: [
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                networkInfoGridTile(context: context, title: 'Connection Type', value: networkInfo.connectionType.toUpperCase()),
+                                                networkInfoGridTile(context: context, title: 'Subnet Mask', value: "${networkInfo.subnet}")
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                        Expanded(
-                                          child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              networkInfoGridTile(context: context, title: 'Network Name', value: "${networkInfo.ssid}"),
-                                              networkInfoGridTile(context: context, title: 'Gateway', value: "${networkInfo.gateway}"),
-                                            ],
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                networkInfoGridTile(context: context, title: 'Network Name', value: "${networkInfo.ssid}"),
+                                                networkInfoGridTile(context: context, title: 'Gateway', value: "${networkInfo.gateway}"),
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                        Expanded(
-                                          child: Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              networkInfoGridTile(context: context, title: 'IP Address', value: "${networkInfo.ip}"),
-                                              networkInfoGridTile(context: context, title: 'BSSID', value: "${networkInfo.bssid}"),
-                                            ]
-                                          ),
-                                        )
-                                      ],
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                networkInfoGridTile(context: context, title: 'IP Address', value: "${networkInfo.ip}"),
+                                                networkInfoGridTile(context: context, title: 'BSSID', value: "${networkInfo.bssid}"),
+                                              ]
+                                            ),
+                                          )
+                                        ],
+                                      ),
                                     ),
                                     Expanded(
                                       child: Row(
@@ -167,7 +166,7 @@ class _NetworkInfoPageState extends State<NetworkInfoPage> {
                                             padding: EdgeInsets.symmetric(vertical: 15,horizontal: 50),
                                             elevation: 0,
                                             autofocus: true,
-                                            onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>WebviewPage(testPage: "testPage",gateway: networkInfo.gateway,fetchedDate: dateTime,))),
+                                            onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>WebviewPage(testPage: "https://github.com/KraizyVic",gateway: networkInfo.gateway,fetchedDate: dateTime,))),
                                             shape: RoundedRectangleBorder(
                                               side: BorderSide(color: Theme.of(context).colorScheme.primary.withAlpha(100)),
                                               borderRadius: BorderRadius.circular(10),
@@ -274,7 +273,7 @@ class _NetworkInfoPageState extends State<NetworkInfoPage> {
                                   Expanded(
                                     child: MaterialButton(
                                       focusColor: Theme.of(context).colorScheme.primary,
-                                      onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>WebviewPage(testPage: "testPage",gateway: snapshot.data!.gateway,))),
+                                      onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>WebviewPage(testPage: "https://github.com/KraizyVic",gateway: snapshot.data!.gateway,))),
                                       color: Theme.of(context).colorScheme.primary,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(10),
